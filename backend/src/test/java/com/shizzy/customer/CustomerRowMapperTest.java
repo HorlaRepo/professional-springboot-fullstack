@@ -1,5 +1,7 @@
 package com.shizzy.customer;
 
+import com.shizzy.customer.Customer;
+import com.shizzy.customer.CustomerRowMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
