@@ -1,9 +1,12 @@
 package com.shizzy.customer;
 
-import com.shizzy.AbstractTestContainers;
+import java.AbstractTestContainers;
+
+import com.shizzy.customer.Customer;
+import com.shizzy.customer.CustomerJDBCDataAccessService;
+import com.shizzy.customer.CustomerRowMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 import java.util.Optional;

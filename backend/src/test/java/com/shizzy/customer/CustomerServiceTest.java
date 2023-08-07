@@ -1,8 +1,9 @@
 package com.shizzy.customer;
 
-import com.shizzy.exception.DuplicateResourceException;
-import com.shizzy.exception.RequestValidationException;
-import com.shizzy.exception.ResourceNotFoundException;
+import com.shizzy.customer.*;
+import src.main.java.exception.DuplicateResourceException;
+import src.main.java.exception.RequestValidationException;
+import src.main.java.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
