@@ -1,10 +1,10 @@
 package com.shizzy.customer;
-
-import src.main.java.exception.DuplicateResourceException;
-import src.main.java.exception.RequestValidationException;
-import src.main.java.exception.ResourceNotFoundException;
+import com.shizzy.exception.DuplicateResourceException;
+import com.shizzy.exception.RequestValidationException;
+import com.shizzy.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 

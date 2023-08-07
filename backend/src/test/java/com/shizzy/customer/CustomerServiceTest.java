@@ -1,16 +1,12 @@
 package com.shizzy.customer;
-
-import com.shizzy.customer.*;
-import src.main.java.exception.DuplicateResourceException;
-import src.main.java.exception.RequestValidationException;
-import src.main.java.exception.ResourceNotFoundException;
-import org.junit.jupiter.api.AfterEach;
+import com.shizzy.exception.DuplicateResourceException;
+import com.shizzy.exception.RequestValidationException;
+import com.shizzy.exception.ResourceNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 

@@ -1,10 +1,5 @@
 package com.shizzy.customer;
-
-import java.AbstractTestContainers;
-
-import com.shizzy.customer.Customer;
-import com.shizzy.customer.CustomerJDBCDataAccessService;
-import com.shizzy.customer.CustomerRowMapper;
+import com.shizzy.AbstractTestContainers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
