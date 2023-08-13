@@ -65,8 +65,8 @@ jobs:
           deployment_package: backend/Dockerrun.aws.json
       - name: Commit and push Dockerrun.aws.json
         run:
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config --local user.name github-actions
+          git config --local user.email github-actions@github.com
           git add .
           git commit -m "Update Dockerrun.aws.json docker image"
           git push
