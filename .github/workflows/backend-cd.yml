@@ -46,7 +46,7 @@ jobs:
       - name: Build Package Push with Maven
         run: mvn -ntp -B verify -Ddocker.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}} jib:build
       - name: Update Dockerrun.aws.json api image tag with new build number
-        run:
+        run: |
           echo "Dockerrun.aws.json before updating tag"
           cat Dockerrun.aws.json
           sed -i -E 's_(shizzy0/shizzy-api:)([^"]*)_\1'${{steps.build-number.outputs.BUILD_NUMBER}}'_' Dockerrun.aws.json
