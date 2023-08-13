@@ -63,11 +63,11 @@ jobs:
           version_description: ${{ github.SHA }}
           region: ${{ secrets.EB_REGION }}
           deployment_package: backend/Dockerrun.aws.json
-      - name: Commit and push Dockerrun.aws.json
-        run:
-          git add .
-          git commit -m "Update Dockerrun.aws.json docker image"
-          git push
+#      - name: Commit and push Dockerrun.aws.json
+#        run:
+#          git add .
+#          git commit -m "Update Dockerrun.aws.json docker image"
+#          git push
 
 
 
