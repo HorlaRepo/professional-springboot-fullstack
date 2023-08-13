@@ -15,14 +15,12 @@
 	<name>shizzy-api</name>
 	<description>Demo project for Spring Boot</description>
 
-	<organization>
-		<name>shizzy</name>
-		<url>https://shizzy.com</url>
-	</organization>
 
 	<properties>
 		<java.version>17</java.version>
 		<docker.username>shizzy0</docker.username>
+		<docker.image.name>shizzy-api</docker.image.name>
+		<docker.image.tag/>
 	</properties>
 
 	<dependencies>
@@ -172,7 +170,7 @@
 						</platforms>
 					</from>
 					<to>
-						<image>docker.io/${docker.username}/${project.artifactId}:${project.version}</image>
+						<image>docker.io/${docker.username}/${docker.image.name}:${docker.image.tag}</image>
 						<tags>
 							<tag>latest</tag>
 						</tags>
