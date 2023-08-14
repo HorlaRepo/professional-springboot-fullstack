@@ -35,7 +35,7 @@ jobs:
         run: >
           curl -X POST -H 'Content-type: application/json'
           --data '
-            {"text":"Deployment started :progress_bar: :fingerscrossed:"}
+            {"text":":progress_bar: Deployment started :fingerscrossed:"}
           '
           ${{ secrets.SLACK_WEBHOOK_URL }}  
 
@@ -81,7 +81,7 @@ jobs:
       - name: Send message to slack "Starting deployment to Elastic Beanstalk"
         run: >
           curl -X POST -H 'Content-type: application/json'
-          --data '{"text":" :aws: Image tag: ${{steps.build-number.outputs.BUILD_NUMBER}} pushed to Docker hub"}'
+          --data '{"text":" :aws: :progress_bar: Image tag: ${{steps.build-number.outputs.BUILD_NUMBER}} deploying to EBS..."}'
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
       - name: Deploy to Elastic Beanstalk
@@ -114,5 +114,12 @@ jobs:
         run: >
           curl -X POST -H 'Content-type: application/json'
           --data '{"text":"Deployment and commit completed :checked:"}'
+          ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Send message to slack
+        if: always()
+        run: >
+          curl -X POST -H 'Content-type: application/json'
+          --data '{"text":"Job Status ${{ job.status }}"}'
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
