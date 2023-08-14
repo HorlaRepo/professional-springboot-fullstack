@@ -110,7 +110,7 @@ jobs:
           git commit -m "Update Dockerrun.aws.json docker image with new tag ${{ steps.build-number.outputs.BUILD_NUMBER }}"
           git push
 
-      - name: Send message to slack "Deployment and commit completed"
+      - name: Send message to slack
         run: >
           curl -X POST -H 'Content-type: application/json'
           --data '{"text":"Deployment and commit completed :checked:"}'
