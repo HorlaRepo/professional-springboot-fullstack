@@ -30,6 +30,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Send message to slack "Successfully cloned Repository"
+        run: >
+          curl -X POST -H 'Content-type: application/json'
+          --data '{"text":"Repository cloned, moving to setting up Java :wave:"}'
+          ${{ secrets.SLACK_WEBHOOK_URL }}
       - uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
@@ -45,6 +50,11 @@ jobs:
         run: echo "BUILD_NUMBER=$(date '+%d.%m.%Y.%H.%M.%S')" >> $GITHUB_OUTPUT
       - name: Build Package Push with Maven
         run: mvn -ntp -B verify -Ddocker.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}} jib:build
+      - name: Send message to slack "Build successful"
+        run: >
+          curl -X POST -H 'Content-type: application/json'
+          --data '{"text":"Build successful, moving to update Dockerrun.aws.json file :wave:"}'
+          ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Update Dockerrun.aws.json api image tag with new build number
         run: |
           echo "Dockerrun.aws.json before updating tag"
@@ -63,6 +73,11 @@ jobs:
           version_description: ${{ github.SHA }}
           region: ${{ secrets.EB_REGION }}
           deployment_package: backend/Dockerrun.aws.json
+      - name: Send message to slack "EBS Deployment Successful"
+        run: >
+          curl -X POST -H 'Content-type: application/json'
+          --data '{"text":"Successfully deployed to Elastic Beanstalk, moving to commit Dockerrun.aws.json file :wave:"}'
+          ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: Commit and push Dockerrun.aws.json
         run: |
           git config user.name github-actions
