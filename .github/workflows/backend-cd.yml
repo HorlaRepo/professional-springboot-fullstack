@@ -58,7 +58,7 @@ jobs:
       - name: Send message to slack "Building with maven"
         run: >
           curl -X POST -H 'Content-type: application/json'
-          --data '{":apache_maven:" "text":"Building with maven"}'
+          --data '{:apache_maven: "text":"Building with maven"}'
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
       - name: Build Package Push with Maven
@@ -67,7 +67,7 @@ jobs:
       - name: Send message to slack "Image pushed to Docker Hub"
         run: >
           curl -X POST -H 'Content-type: application/json'
-          --data '{":docker:" "text":"Image tag: ${{steps.build-number.outputs.BUILD_NUMBER}} pushed to Docker hub"}'
+          --data '{:docker: "text":"Image tag: ${{steps.build-number.outputs.BUILD_NUMBER}} pushed to Docker hub"}'
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
       - name: Update Dockerrun.aws.json api image tag with new build number
@@ -81,7 +81,7 @@ jobs:
       - name: Send message to slack "Starting deployment to Elastic Beanstalk"
         run: >
           curl -X POST -H 'Content-type: application/json'
-          --data '{":aws:" "text":"Image tag: ${{steps.build-number.outputs.BUILD_NUMBER}} pushed to Docker hub"}'
+          --data '{:aws: "text":"Image tag: ${{steps.build-number.outputs.BUILD_NUMBER}} pushed to Docker hub"}'
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
       - name: Deploy to Elastic Beanstalk
@@ -99,7 +99,7 @@ jobs:
       - name: Send message to slack "Committing to repo"
         run: >
           curl -X POST -H 'Content-type: application/json'
-          --data '{":loading:" "text":"Committing to repo"}'
+          --data '{:loading: "text":"Committing to repo"}'
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
       - name: Commit and push Dockerrun.aws.json
