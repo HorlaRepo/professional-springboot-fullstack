@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "shizzy-api",
-      "image": "shizzy0/shizzy-api:14.08.2023.22.38.26",
+      "image": "shizzy0/shizzy-api:16.08.2023.11.03.35",
       "essential": true,
       "memory": 512,
       "portMappings": [
