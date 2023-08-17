@@ -25,7 +25,7 @@ public class Main {
     CommandLineRunner runner(CustomerRepository repository){
         return args -> {
 
-            //generateFakeData(repository);
+            generateFakeData(repository);
 
         };
 

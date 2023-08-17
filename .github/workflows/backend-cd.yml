@@ -55,7 +55,7 @@ jobs:
         id: build-number
         run: echo "BUILD_NUMBER=$(date '+%d.%m.%Y.%H.%M.%S')" >> $GITHUB_OUTPUT
 
-      - name: Send message to slack "Building with maven"
+      - name: Send message to slack
         run: >
           curl -X POST -H 'Content-type: application/json'
           --data '{ "text":":apache_maven: Building with maven"}'
@@ -64,7 +64,7 @@ jobs:
       - name: Build Package Push with Maven
         run: mvn -ntp -B verify -Ddocker.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}} jib:build
 
-      - name: Send message to slack "Image pushed to Docker Hub"
+      - name: Send message to slack
         run: >
           curl -X POST -H 'Content-type: application/json'
           --data '{ "text":":docker: Image tag: ${{steps.build-number.outputs.BUILD_NUMBER}} pushed to Docker hub"}'
@@ -78,7 +78,7 @@ jobs:
           echo "Dockerrun.aws.json after updating tag"
           cat Dockerrun.aws.json
 
-      - name: Send message to slack "Starting deployment to Elastic Beanstalk"
+      - name: Send message to slack
         run: >
           curl -X POST -H 'Content-type: application/json'
           --data '{"text":" :aws: :progress_bar: Image tag: ${{steps.build-number.outputs.BUILD_NUMBER}} deploying to EBS..."}'
@@ -96,7 +96,7 @@ jobs:
           region: ${{ secrets.EB_REGION }}
           deployment_package: backend/Dockerrun.aws.json
 
-      - name: Send message to slack "Committing to repo"
+      - name: Send message to slack
         run: >
           curl -X POST -H 'Content-type: application/json'
           --data '{"text":" :loading: Committing to repo"}'
