@@ -31,6 +31,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Slack commit message and sha
+        run: >
+          curl -X POST -H 'Content-type: application/json'
+          --data '{"text":":github_parrot: https://github.com/HorlaRepo/springboot-react-fullstack/commit/${{ github.sha }} - ${{ github.event.head_commit.message }}"}'
+          ${{ secrets.SLACK_WEBHOOK_URL }}  
+
       - name: Send Slack Message
         run: >
           curl -X POST -H 'Content-type: application/json'
