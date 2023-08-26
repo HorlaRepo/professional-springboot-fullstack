@@ -5,6 +5,7 @@ import com.github.javafaker.Name;
 import com.shizzy.customer.Customer;
 import com.shizzy.customer.CustomerRegistrationRequest;
 import com.shizzy.customer.CustomerUpdateRequest;
+import com.shizzy.customer.Gender;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -68,8 +69,8 @@ public class CustomerIntegrationTest {
 
         //make sure that customer is present
         Customer expectedCustomer = new Customer(
-                name,email,age
-        );
+                name,email,age,
+                Gender.MALE);
         assertThat(allCustomers)
                 .usingRecursiveFieldByFieldElementComparatorIgnoringFields("id")
                 .contains(expectedCustomer);
@@ -223,8 +224,8 @@ public class CustomerIntegrationTest {
                 .getResponseBody();
 
         Customer expected = new Customer(
-                id, newName, email, age
-        );
+                id, newName, email, age,
+                Gender.MALE);
 
         assertThat(updatedCustomer).isEqualTo(expected);
 

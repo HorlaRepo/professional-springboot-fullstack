@@ -18,7 +18,6 @@ import lombok.*;
                 )
         }
 )
-@AllArgsConstructor
 public class Customer{
     @Id
     @SequenceGenerator(
@@ -46,10 +45,25 @@ public class Customer{
     )
     private Integer age;
 
-    public Customer(String name, String email, Integer age) {
+    @Column(
+        nullable = false
+    )
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    public Customer(String name, String email, Integer age, Gender gender) {
         this.name = name;
         this.email = email;
         this.age = age;
+        this.gender = gender;
+    }
+
+    public Customer(Integer id, String name, String email, Integer age, Gender gender) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.gender = gender;
     }
 
 

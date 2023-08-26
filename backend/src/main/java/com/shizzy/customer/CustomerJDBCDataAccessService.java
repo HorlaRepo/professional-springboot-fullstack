@@ -21,7 +21,7 @@ public class CustomerJDBCDataAccessService implements CustomerDao{
     @Override
     public List<Customer> selectAllCustomers() {
         var sql = """
-                SELECT id, name, email, age
+                SELECT id, name, email, age, gender
                 FROM customer
                 """;
         return jdbcTemplate.query(sql,customerRowMapper);
@@ -29,9 +29,8 @@ public class CustomerJDBCDataAccessService implements CustomerDao{
 
     @Override
     public Optional<Customer> selectCustomerById(Integer id) {
-        Optional<Customer> customer;
             var sql = """
-                SELECT id, name, email, age
+                SELECT id, name, email, age, gender
                 FROM customer
                 WHERE id = ?
                 """;
@@ -40,27 +39,22 @@ public class CustomerJDBCDataAccessService implements CustomerDao{
                 return Optional.empty();
             }
             return Optional.ofNullable(customers.get(0));
-//            try {
-//                customer = Optional.of((Customer) Objects.requireNonNull(jdbcTemplate.queryForObject(sql, customerRowMapper, id)));
-//            } catch (Exception e){
-//                return null;
-//                //throw new ResourceNotFoundException("Customer not found");
-//            }
-//                return customer;
+//
 
     }
 
     @Override
     public void insertCustomer(Customer customer) {
         var sql = """
-                INSERT INTO customer(name, email, age)
-                VALUES (?, ?, ?)
+                INSERT INTO customer(name, email, age, gender)
+                VALUES (?, ?, ?, ?)
                 """;
         jdbcTemplate.update(
                 sql,
                 customer.getName(),
                 customer.getEmail(),
-                customer.getAge()
+                customer.getAge(),
+                customer.getGender().name()
         );
 
     }
