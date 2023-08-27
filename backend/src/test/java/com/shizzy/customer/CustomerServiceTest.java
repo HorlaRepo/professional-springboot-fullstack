@@ -75,8 +75,10 @@ class CustomerServiceTest {
         String email = "francis@gmail.com";
         when(customerDao.existsPersonWithEmail(email)).thenReturn(false);
 
+        final int age = 19;
+
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                "Alex",email,19
+                "Alex",email, age, Gender.MALE
         );
 
         //When
@@ -105,7 +107,7 @@ class CustomerServiceTest {
         when(customerDao.existsPersonWithEmail(email)).thenReturn(true);
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                "Alex",email,19
+                "Alex",email,19, Gender.MALE
         );
 
         //When

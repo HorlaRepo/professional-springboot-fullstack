@@ -37,11 +37,13 @@ public class Main {
             Name name = faker.name();
             String firstName = name.firstName();
             String lastName = name.lastName();
+            final int age = random.nextInt(16, 99);
+            Gender gender = age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
             Customer customer = new Customer(
                     firstName+" "+lastName,
                     firstName.toLowerCase()+"."+lastName.toLowerCase()+"@froshtech.org",
-                    random.nextInt(16,99),
-                    Gender.MALE);
+                    age,
+                    gender);
             customers.add(customer);
         }
         repository.saveAll(customers);

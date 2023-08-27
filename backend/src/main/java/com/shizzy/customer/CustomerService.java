@@ -41,7 +41,7 @@ public class CustomerService {
                 customerRegistrationRequest.name(),
                 customerRegistrationRequest.email(),
                 customerRegistrationRequest.age(),
-                Gender.MALE);
+                customerRegistrationRequest.gender());
         customerDao.insertCustomer(customer);
     }
 

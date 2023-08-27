@@ -41,8 +41,10 @@ public class CustomerIntegrationTest {
         String email = fakerName.lastName() +"_"+ UUID.randomUUID() + "@shizzy.com";
         int age = RANDOM.nextInt(10,100);
 
+        Gender gender = age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
+
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-            name,email,age
+            name,email,age, gender
         );
 
         //send a post request
@@ -104,8 +106,10 @@ public class CustomerIntegrationTest {
         String email = fakerName.lastName() +"_"+ UUID.randomUUID() + "@shizzy.com";
         int age = RANDOM.nextInt(10,100);
 
+        Gender gender = age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
+
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name,email,age
+                name, email, age, gender
         );
 
         //send a post request
@@ -164,8 +168,10 @@ public class CustomerIntegrationTest {
         String email = fakerName.lastName() +"_"+ UUID.randomUUID() + "@shizzy.com";
         int age = RANDOM.nextInt(10,100);
 
+        Gender gender = age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
+
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                name,email,age
+                name,email,age,gender
         );
 
         //send a post request
@@ -225,7 +231,7 @@ public class CustomerIntegrationTest {
 
         Customer expected = new Customer(
                 id, newName, email, age,
-                Gender.MALE);
+                gender);
 
         assertThat(updatedCustomer).isEqualTo(expected);
 
