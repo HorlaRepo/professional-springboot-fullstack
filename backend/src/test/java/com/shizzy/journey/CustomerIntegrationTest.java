@@ -38,7 +38,7 @@ public class CustomerIntegrationTest {
         Faker faker = new Faker();
         Name fakerName = faker.name();
         String name = fakerName.fullName();
-        String email = fakerName.lastName() +"_"+ UUID.randomUUID() + "@shizzy.com";
+        String email = fakerName.lastName() +"_" + "@froshtech.org";
         int age = RANDOM.nextInt(10,100);
 
         Gender gender = age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
