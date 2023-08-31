@@ -22,7 +22,7 @@ public class CustomerJDBCDataAccessService implements CustomerDao{
     public List<Customer> selectAllCustomers() {
         var sql = """
                 SELECT id, name, email, age, gender
-                FROM customer
+                FROM customer ORDER BY id
                 """;
         return jdbcTemplate.query(sql,customerRowMapper);
     }

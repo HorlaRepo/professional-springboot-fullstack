@@ -25,6 +25,18 @@
         depends_on:
           - db
         restart: unless-stopped
+      shizzy-react:
+        container_name: shizzy-react
+        image: shizzy0/shizzy-react
+        build:
+          context: frontend/react
+          args:
+            api_base_url: http://localhost:8088
+        ports:
+          - "3000:5173"
+        depends_on:
+          - shizzy-api
+        restart: unless-stopped
 
     networks:
       db:

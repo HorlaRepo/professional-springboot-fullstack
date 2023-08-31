@@ -78,6 +78,7 @@ public class CustomerIntegrationTest {
                 .contains(expectedCustomer);
 
 
+        assert allCustomers != null;
         int id = allCustomers.stream()
                         .filter(customer -> customer.getEmail().equals(email))
                                 .map(Customer::getId)
@@ -135,6 +136,7 @@ public class CustomerIntegrationTest {
                 .getResponseBody();
 
 
+        assert allCustomers != null;
         int id = allCustomers.stream()
                 .filter(customer -> customer.getEmail().equals(email))
                 .map(Customer::getId)
