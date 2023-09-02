@@ -6,8 +6,9 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
-@EqualsAndHashCode
 @RequiredArgsConstructor
+@EqualsAndHashCode
+@AllArgsConstructor
 @Entity
 @Table(
         name = "customer",
@@ -58,13 +59,13 @@ public class Customer{
         this.gender = gender;
     }
 
-    public Customer(Integer id, String name, String email, Integer age, Gender gender) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.age = age;
-        this.gender = gender;
-    }
+//    public Customer(Integer id, String name, String email, Integer age, Gender gender) {
+//        this.id = id;
+//        this.name = name;
+//        this.email = email;
+//        this.age = age;
+//        this.gender = gender;
+//    }
 
 
 }
