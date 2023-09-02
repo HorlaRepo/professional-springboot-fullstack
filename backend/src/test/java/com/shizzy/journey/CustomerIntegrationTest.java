@@ -77,7 +77,6 @@ public class CustomerIntegrationTest {
                 .usingRecursiveFieldByFieldElementComparatorIgnoringFields("id")
                 .contains(expectedCustomer);
 
-
         assert allCustomers != null;
         int id = allCustomers.stream()
                         .filter(customer -> customer.getEmail().equals(email))
