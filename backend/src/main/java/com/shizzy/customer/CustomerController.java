@@ -15,6 +15,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping
     public List<Customer> getCustomers(){
         return customerService.getAllCustomers();
