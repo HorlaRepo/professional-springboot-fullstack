@@ -6,10 +6,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/customers")
-@CrossOrigin(
-        origins = "shizzy-api-env.eba-anuuvjnu.eu-west-2.elasticbeanstalk.com",
-        methods = RequestMethod.GET
-)
+
 public class CustomerController {
 
     private final CustomerService customerService;
