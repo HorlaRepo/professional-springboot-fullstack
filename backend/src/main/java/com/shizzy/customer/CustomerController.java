@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("api/v1/customers")
 
@@ -15,7 +16,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
+
     @GetMapping
     public List<Customer> getCustomers(){
         return customerService.getAllCustomers();
