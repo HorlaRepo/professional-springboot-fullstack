@@ -16,7 +16,7 @@
 
     {
       "name": "shizzy-api",
-      "image": "shizzy0/shizzy-api:02.09.2023.20.13.09",
+      "image": "shizzy0/shizzy-api:03.09.2023.09.48.44",
       "essential": true,
       "memory": 512,
       "portMappings": [
