@@ -95,6 +95,8 @@ public class CustomerIntegrationTest {
                 .isOk()
                 .expectBody(new ParameterizedTypeReference<Customer>() {})
                 .isEqualTo(expectedCustomer);
+
+        System.out.println(id);
     }
 
     @Test

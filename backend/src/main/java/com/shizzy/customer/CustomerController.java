@@ -18,6 +18,7 @@ public class CustomerController {
 
 
     @GetMapping
+    @CrossOrigin(origins = "http://shizzy-api-env.eba-anuuvjnu.eu-west-2.elasticbeanstalk.com", methods = RequestMethod.GET)
     public List<Customer> getCustomers(){
         return customerService.getAllCustomers();
     }
