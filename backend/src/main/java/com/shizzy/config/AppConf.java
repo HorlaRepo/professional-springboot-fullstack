@@ -15,8 +15,8 @@ public class AppConf{
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("*")
+                registry.addMapping("/api/**")
+                        .allowedOrigins("http://shizzy-api-env.eba-anuuvjnu.eu-west-2.elasticbeanstalk.com")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .maxAge(-1)
                         .allowCredentials(false)
