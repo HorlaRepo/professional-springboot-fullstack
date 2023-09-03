@@ -4,7 +4,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://shizzy-api-env.eba-anuuvjnu.eu-west-2.elasticbeanstalk.com:80", allowedHeaders = "*")
 @RestController
 @RequestMapping("api/v1/customers")
 
@@ -18,7 +17,6 @@ public class CustomerController {
 
 
     @GetMapping
-    @CrossOrigin(origins = "http://shizzy-api-env.eba-anuuvjnu.eu-west-2.elasticbeanstalk.com:80", methods = {RequestMethod.GET, RequestMethod.POST})
     public List<Customer> getCustomers(){
         return customerService.getAllCustomers();
     }
