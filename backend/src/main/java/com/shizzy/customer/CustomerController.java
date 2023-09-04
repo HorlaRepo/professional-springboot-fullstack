@@ -1,5 +1,6 @@
 package com.shizzy.customer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -7,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1/customers")
-
+@Slf4j
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -19,6 +20,7 @@ public class CustomerController {
 
     @GetMapping
     public List<Customer> getCustomers(){
+        log.info("Calling customer api");
         return customerService.getAllCustomers();
     }
 
