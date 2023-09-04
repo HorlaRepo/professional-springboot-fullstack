@@ -8,7 +8,7 @@
       "memory": 256,
       "portMappings": [
         {
-          "hostPort": 8080,
+          "hostPort": 80,
           "containerPort": 5173
         }
       ]
@@ -21,7 +21,7 @@
       "memory": 512,
       "portMappings": [
         {
-          "hostPort": 80,
+          "hostPort": 8080,
           "containerPort": 8080
         }
       ],
