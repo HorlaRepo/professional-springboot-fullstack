@@ -25,7 +25,7 @@ public class Main {
     @Bean
     CommandLineRunner runner(CustomerRepository repository){
         return args -> {
-            generateFakeData(repository);
+            //generateFakeData(repository);
         };
 
     }

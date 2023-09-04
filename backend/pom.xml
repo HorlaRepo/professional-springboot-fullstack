@@ -13,7 +13,7 @@
 	<artifactId>shizzy-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>shizzy-api</name>
-	<description>Demo project for Spring Boot</description>
+	<description>project for Spring Boot</description>
 
 
 	<properties>
