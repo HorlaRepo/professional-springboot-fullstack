@@ -4,6 +4,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(
+        origins = "http://shizzy-api-env.eba-anuuvjnu.eu-west-2.elasticbeanstalk.com:80/",
+        maxAge = 3600,
+        methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS}
+)
 @RestController
 @RequestMapping("api/v1/customers")
 
