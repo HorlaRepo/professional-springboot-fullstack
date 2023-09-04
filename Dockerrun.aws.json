@@ -8,7 +8,7 @@
       "memory": 256,
       "portMappings": [
         {
-          "hostPort": 80,
+          "hostPort": 8080,
           "containerPort": 5173
         }
       ]
@@ -16,12 +16,12 @@
 
     {
       "name": "shizzy-api",
-      "image": "shizzy0/shizzy-api:04.09.2023.09.53.15",
+      "image": "shizzy0/shizzy-api:04.09.2023.09.53.39",
       "essential": true,
       "memory": 512,
       "portMappings": [
         {
-          "hostPort": 8080,
+          "hostPort": 80,
           "containerPort": 8080
         }
       ],
