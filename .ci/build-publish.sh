@@ -2,8 +2,8 @@
 : "${REPO:?REPO not set or empty}"
 : "${TAG:?TAG not set or empty}"
 
-docker buildx build \
-    --platform=linux/arm64 \
+docker buildx create --use \
+    --platform=linux/amd64,linux/arm64 \
     -t "${USERNAME}/${REPO}:${TAG}" \
     -t "${USERNAME}/${REPO}:latest" \
     "${@:2}" \
