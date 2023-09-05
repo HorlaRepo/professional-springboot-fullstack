@@ -52,7 +52,7 @@ jobs:
       - name: Send Slack message
         run: >
           curl -X POST -H 'Content-type: application/json'
-          --data '{ "text":":docker: Image tag:${{ ssteps.build-number.outputs.BUILD_NUMBER }} pushed to https://hub.docker.com/repository/docker/shizzy0/shizzy-react"}'
+          --data '{ "text":":docker: Image tag:${{ steps.build-number.outputs.BUILD_NUMBER }} pushed to https://hub.docker.com/repository/docker/shizzy0/shizzy-react"}'
           ${{ secrets.SLACK_WEBHOOK_URL }}
 
       - name: Update Dockerrun.aws.json react image tag with new build number
