@@ -10,11 +10,11 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
 
@@ -23,12 +23,17 @@ class CustomerServiceTest {
 
     @Mock
     private CustomerDao customerDao;
+    @Mock
+    private PasswordEncoder passwordEncoder;
     private CustomerService underTest;
+    private final CustomerDTOMapper customerDTOMapper = new CustomerDTOMapper();
+
+
 
     @BeforeEach
     void setUp() {
         AutoCloseable closeable = MockitoAnnotations.openMocks(this);
-        underTest = new CustomerService(customerDao);
+        underTest = new CustomerService(customerDao, passwordEncoder, customerDTOMapper);
     }
 
     @Test
@@ -44,14 +49,15 @@ class CustomerServiceTest {
     void canGetCustomer() {
         //Given
         int id = 10;
-        Customer customer = new Customer(id,"Francis","francis@gmail.com",20, Gender.MALE);
+        Customer customer = new Customer(id,"Francis","francis@gmail.com", "password", 20, Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
+        CustomerDTO expected = customerDTOMapper.apply(customer);
         //When
-        Customer actual = underTest.getCustomer(id);
+        CustomerDTO actual = underTest.getCustomer(id);
 
         //Then
-        assertThat(actual).isEqualTo(customer);
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
@@ -78,8 +84,12 @@ class CustomerServiceTest {
         final int age = 19;
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                "Alex",email, age, Gender.MALE
+                "Alex",email, "password", age, Gender.MALE
         );
+
+        String passwordHash = "65!!!@#ml;::as";
+
+        when(passwordEncoder.encode(request.password())).thenReturn(passwordHash);
 
         //When
         underTest.addCustomer(request);
@@ -97,6 +107,7 @@ class CustomerServiceTest {
         assertThat(capturedCustomer.getName()).isEqualTo(request.name());
         assertThat(capturedCustomer.getEmail()).isEqualTo(request.email());
         assertThat(capturedCustomer.getAge()).isEqualTo(request.age());
+        assertThat(capturedCustomer.getPassword()).isEqualTo(passwordHash);
 
     }
 
@@ -107,7 +118,7 @@ class CustomerServiceTest {
         when(customerDao.existsPersonWithEmail(email)).thenReturn(true);
 
         CustomerRegistrationRequest request = new CustomerRegistrationRequest(
-                "Alex",email,19, Gender.MALE
+                "Alex",email, "password", 19, Gender.MALE
         );
 
         //When
@@ -158,7 +169,7 @@ class CustomerServiceTest {
     void canUpdateAllCustomerProperties() {
         //Given
         int id = 10;
-        Customer customer = new Customer(id,"Francis","francis@gmail.com",20, Gender.MALE);
+        Customer customer = new Customer(id,"Francis","francis@gmail.com", "password", 20, Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         final String newEmail = "frank@yahoo.com";
@@ -186,7 +197,7 @@ class CustomerServiceTest {
     void canUpdateOnlyCustomerName() {
         //Given
         int id = 10;
-        Customer customer = new Customer(id,"Francis","francis@gmail.com",20, Gender.MALE);
+        Customer customer = new Customer(id,"Francis","francis@gmail.com", "password", 20, Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         CustomerUpdateRequest updateRequest = new CustomerUpdateRequest(
@@ -212,7 +223,7 @@ class CustomerServiceTest {
     void canUpdateOnlyCustomerEmail() {
         //Given
         int id = 10;
-        Customer customer = new Customer(id,"Francis","francis@gmail.com",20, Gender.MALE);
+        Customer customer = new Customer(id,"Francis","francis@gmail.com", "password", 20, Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         final String newEmail = "frank@yahoo.com";
@@ -242,7 +253,7 @@ class CustomerServiceTest {
     void canUpdateOnlyCustomerAge() {
         //Given
         int id = 10;
-        Customer customer = new Customer(id,"Francis","francis@gmail.com",20, Gender.MALE);
+        Customer customer = new Customer(id,"Francis","francis@gmail.com", "password", 20, Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         CustomerUpdateRequest updateRequest = new CustomerUpdateRequest(
@@ -268,7 +279,7 @@ class CustomerServiceTest {
     void willThrowWhenTryingToUpdateCustomerEmailWhenAlreadyTaken() {
         //Given
         int id = 10;
-        Customer customer = new Customer(id,"Francis","francis@gmail.com",20, Gender.MALE);
+        Customer customer = new Customer(id,"Francis","francis@gmail.com", "password", 20, Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         final String newEmail = "frank@yahoo.com";
@@ -293,7 +304,7 @@ class CustomerServiceTest {
     void willThrowWhenCustomerUpdateHasNoChanges() {
         //Given
         int id = 10;
-        Customer customer = new Customer(id,"Francis","francis@gmail.com",20, Gender.MALE);
+        Customer customer = new Customer(id,"Francis","francis@gmail.com", "password", 20, Gender.MALE);
         when(customerDao.selectCustomerById(id)).thenReturn(Optional.of(customer));
 
         CustomerUpdateRequest updateRequest = new CustomerUpdateRequest(

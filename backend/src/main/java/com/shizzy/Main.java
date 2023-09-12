@@ -9,11 +9,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 @SpringBootApplication
 public class Main {
@@ -23,16 +24,18 @@ public class Main {
     }
 
     @Bean
-    CommandLineRunner runner(CustomerRepository repository){
+    CommandLineRunner runner(CustomerRepository repository, PasswordEncoder encoder){
         return args -> {
-            //generateFakeData(repository);
+            generateFakeData(repository, encoder);
         };
 
     }
 
-    void generateFakeData(CustomerRepository repository){
+    void generateFakeData(
+            CustomerRepository repository,
+            PasswordEncoder encoder){
         List<Customer> customers = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             Faker faker = new Faker();
             Random random = new Random();
             Name name = faker.name();
@@ -43,6 +46,7 @@ public class Main {
             Customer customer = new Customer(
                     firstName+" "+lastName,
                     firstName.toLowerCase()+"."+lastName.toLowerCase()+"@froshtech.org",
+                    encoder.encode(UUID.randomUUID().toString()),
                     age,
                     gender);
             customers.add(customer);

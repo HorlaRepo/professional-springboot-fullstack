@@ -1,6 +1,5 @@
 package com.shizzy.customer;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.ResultSet;
@@ -32,7 +31,7 @@ class CustomerRowMapperTest {
         //Then
         Customer expected = new Customer(
                 1,
-                "Ola","ola@email.com",19,Gender.MALE
+                "Ola","ola@email.com", "password", 19,Gender.MALE
         );
 
         assertThat(actual).isEqualTo(expected);
