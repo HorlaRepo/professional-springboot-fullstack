@@ -11,7 +11,6 @@ import {
     AlertDialogHeader,
     AlertDialogContent,
     AlertDialogOverlay,
-    AlertDialogCloseButton,
     Image,
     Flex,
     Text,
@@ -21,7 +20,7 @@ import {
     useColorModeValue, Tag, useDisclosure
 } from '@chakra-ui/react'
  import {useRef} from "react";
-import {DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import { DeleteIcon } from '@chakra-ui/icons'
 import {deleteCustomer} from "../../services/client.js"
 import {successNotification, errorNotification} from "../../services/Notification.js"
 import UpdateCustomerDrawer from "./UpdateCustomerDrawer.jsx";
