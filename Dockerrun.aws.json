@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "shizzy-react",
-      "image": "shizzy0/shizzy-react:05.09.2023.10.51.22",
+      "image": "shizzy0/shizzy-react:15.09.2023.09.40.02",
       "essential": true,
       "memory": 256,
       "portMappings": [
