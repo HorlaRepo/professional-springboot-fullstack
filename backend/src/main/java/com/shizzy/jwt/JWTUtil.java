@@ -14,6 +14,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Map;
 
+import static java.time.temporal.ChronoUnit.*;
+
 @Service
 public class JWTUtil {
 
@@ -37,10 +39,10 @@ public class JWTUtil {
                 .builder()
                 .setClaims(claims)
                 .setSubject(subject)
-                .setIssuer("https://amigoscode.com")
+                .setIssuer("https://shizzy.com")
                 .setIssuedAt(Date.from(Instant.now()))
                 .setExpiration(
-                        Date.from(Instant.now().plus(15, ChronoUnit.DAYS))
+                        Date.from(Instant.now().plus(15, DAYS))
                 )
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
