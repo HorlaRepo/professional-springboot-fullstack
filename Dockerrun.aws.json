@@ -2,33 +2,20 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "name": "shizzy-react",
-      "image": "shizzy0/shizzy-react:15.09.2023.12.34.12",
-      "essential": true,
-      "memory": 256,
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 5173
-        }
-      ]
-    },
-
-    {
       "name": "shizzy-api",
       "image": "shizzy0/shizzy-api:15.09.2023.09.17.30",
       "essential": true,
       "memory": 512,
       "portMappings": [
         {
-          "hostPort": 8080,
+          "hostPort": 80,
           "containerPort": 8080
         }
       ],
       "environment": [
         {
           "name": "SPRING_DATASOURCE_URL",
-          "value": "jdbc:postgresql://awseb-e-kxh5xtcysu-stack-awsebrdsdatabase-m8avxzagzdcu.ccnpg3a3j6af.eu-west-2.rds.amazonaws.com:5432/customer"
+          "value": "jdbc:postgresql://awseb-e-9mjrvxafke-stack-awsebrdsdatabase-mbw8hwxvf7xq.ctxz6vicgclw.eu-west-2.rds.amazonaws.com:5432/ebdb"
         }
       ]
     }
