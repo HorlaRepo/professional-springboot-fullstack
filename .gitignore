@@ -2,3 +2,23 @@
 **/.idea/
 **/node_modules
 **/.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+#Angular
+**/.angular/cache
+.sadd-cache/
+connect.lock
+coverage
+libpeerconnection.log
+testem.log
+typings
+
+#Visual Studio Code
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.history/*
