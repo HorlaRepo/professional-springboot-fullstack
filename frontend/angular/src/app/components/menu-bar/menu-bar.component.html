@@ -1,0 +1,12 @@
+<h4 class="text-center mt-0">
+  Dashboard
+</h4>
+<div class="text-center">
+  <p-avatar image="https://marshallspetzone.com/blog/wp-content/uploads/2017/09/1-1.jpg" styleClass="mr-2" size="xlarge" shape="circle"></p-avatar>
+</div>
+<div>
+  <app-menu-item *ngFor="let item of menu"
+                 [menuItem] = "item"
+  >
+  </app-menu-item>
+</div>

@@ -31,6 +31,7 @@ public class Main {
 
     }
 
+
     void generateFakeData(
             CustomerRepository repository,
             PasswordEncoder encoder){
@@ -56,6 +57,5 @@ public class Main {
         repository.saveAll(customers);
 
     }
-
 
 }
