@@ -108,7 +108,7 @@ const Login = () =>  {
 
     useEffect(() => {
         if (customer) {
-            navigate("/dashboard")
+            navigate("/dashboard/customers")
         }
     })
 
@@ -131,7 +131,7 @@ const Login = () =>  {
                 justifyContent={"center"}
                 bgGradient={{sm: 'linear(to-r, blue.600, green.600)'}}
             >
-                <Text fontSize={"5xl"} color={'white'} fontWeight={"bold"} mb={5}>
+                <Text fontSize={"5xl"} color={'white'} fontWeight={"bold"} mb={1}>
                     <Link href={"https://babbybubble.com"}>
                         Enroll Now
                     </Link>
@@ -140,7 +140,7 @@ const Login = () =>  {
                     alt={'Login Image'}
                     objectFit={'scale-down'}
                     src={
-                        'https://user-images.githubusercontent.com/40702606/210880158-e7d698c2-b19a-4057-b415-09f48a746753.png'
+                        'https://i.ibb.co/191CTpS/Screenshot-2023-09-28-at-6-front.png'
                     }
                 />
             </Flex>

@@ -23,7 +23,7 @@ const Signup = () => {
                     <CreateCustomerForm onSuccess={(token) => {
                         localStorage.setItem("access_token", token)
                         setCustomerFromToken()
-                        navigate("/dashboard")
+                        navigate("/dashboard/customers")
                     }}/>
                     <Link color={"blue.500"} href={"/"}>
                         Already have an account? Login now.
@@ -47,7 +47,7 @@ const Signup = () => {
                     alt={'Login Image'}
                     objectFit={'scale-down'}
                     src={
-                        'https://user-images.githubusercontent.com/40702606/210880158-e7d698c2-b19a-4057-b415-09f48a746753.png'
+                        'https://i.ibb.co/191CTpS/Screenshot-2023-09-28-at-6-front.png'
                     }
                 />
             </Flex>
