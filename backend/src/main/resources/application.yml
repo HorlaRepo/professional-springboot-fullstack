@@ -13,13 +13,12 @@ management:
   endpoints:
     web:
       exposure:
-        include: "health, info"
+        include: '*'
 
 
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5332/customer
-    ##url: jdbc:postgresql://awseb-e-kxh5xtcysu-stack-awsebrdsdatabase-m8avxzagzdcu.ccnpg3a3j6af.eu-west-2.rds.amazonaws.com:5432/customer
     username: shizzy
     password: password
   jpa:
