@@ -5,6 +5,8 @@ import com.github.javafaker.Name;
 import com.shizzy.customer.Customer;
 import com.shizzy.customer.CustomerRepository;
 import com.shizzy.customer.Gender;
+import com.shizzy.s3.S3Buckets;
+import com.shizzy.s3.S3Service;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,11 +26,27 @@ public class Main {
     }
 
     @Bean
-    CommandLineRunner runner(CustomerRepository repository, PasswordEncoder encoder){
+    CommandLineRunner runner(
+            CustomerRepository repository,
+            PasswordEncoder encoder){
         return args -> {
             generateFakeData(repository, encoder);
+            //testBucketUploadAndDownload(s3Service, s3Buckets);
         };
+    }
 
+    private static void testBucketUploadAndDownload(S3Service s3Service, S3Buckets s3Buckets) {
+        s3Service.putObject(
+                s3Buckets.getCustomer(),
+                "foo",
+                "Hello World".getBytes());
+
+        final byte[] object = s3Service.getObject(
+                s3Buckets.getCustomer(),
+                "foo"
+        );
+
+        System.out.println("Hooray: " + new String(object));
     }
 
 

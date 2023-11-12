@@ -1,0 +1,9 @@
+aws:
+  s3:
+    mock: false
+
+spring:
+  datasource:
+    url: jdbc:postgresql://awseb-e-9mjrvxafke-stack-awsebrdsdatabase-qkylrnnhq7sp.ctxz6vicgclw.eu-west-2.rds.amazonaws.com:5432/ebdb
+    username: shizzy
+    password: password
