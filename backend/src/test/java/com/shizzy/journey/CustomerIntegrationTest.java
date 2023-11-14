@@ -291,7 +291,7 @@ public class CustomerIntegrationTest {
         Faker faker = new Faker();
         Name fakerName = faker.name();
         String name = fakerName.fullName();
-        String email = fakerName.lastName() +"_" + "@shizzy.com";
+        String email = fakerName.lastName() +"_" + "@shizmania.com";
         int age = RANDOM.nextInt(10,100);
 
         Gender gender = age % 2 == 0 ? Gender.MALE : Gender.FEMALE;
@@ -371,7 +371,7 @@ public class CustomerIntegrationTest {
         //send a get request
         final byte[] downloadedImage = webTestClient.get()
                 .uri(CUSTOMER_URI + "/{customerId}/profile-image", customerDTO.id())
-                .accept(MediaType.APPLICATION_JSON)
+                .accept(MediaType.IMAGE_JPEG)
                 .exchange()
                 .expectStatus()
                 .isOk()
