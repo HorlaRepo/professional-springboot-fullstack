@@ -18,7 +18,7 @@ const CreateCustomerDrawer = ({fetchCustomers}) => {
     return <div>
         <Button
             leftIcon={<AddIcon/>}
-            colorScheme={'red'}
+            colorScheme={'teal'}
             onClick={onOpen}>
             Create customer
         </Button>
@@ -38,7 +38,7 @@ const CreateCustomerDrawer = ({fetchCustomers}) => {
                 <DrawerFooter>
                     <Button
                         leftIcon={<CloseIcon/>}
-                        colorScheme={"red"}
+                        colorScheme={"teal"}
                         onClick={onClose}>
                         Close
                     </Button>

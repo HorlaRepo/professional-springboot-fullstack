@@ -25,17 +25,20 @@ import {deleteCustomer} from "../../services/client.js"
 import {successNotification, errorNotification} from "../../services/Notification.js"
 import UpdateCustomerDrawer from "./UpdateCustomerDrawer.jsx";
 
-export default function CardWithImage({id, name, email, age, gender, imageNumber, fetchCustomers}) {
+export default function CardWithImage({id, name, email, age, gender, imageNumber, fetchCustomers, profileImageId}) {
     const randomUserGender = gender === "MALE" ? "men" : "women";
+    const randomImage = `https://randomuser.me/api/portraits/${randomUserGender}/${imageNumber}.jpg`;
+    const profileImage = profileImageId === null ? randomImage : `${import.meta.env.VITE_API_BASE_URL}/api/v1/customers/${id}/profile-image`;
+
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = useRef()
     return (
         <Center py={6}>
             <Box
-                maxW={'300px'}
+                maxW={'350px'}
                 minW={'280px'}
-                w={'full'}
+                w={'320px'}
                 bg={useColorModeValue('white', 'gray.800')}
                 boxShadow={'lg'}
                 rounded={'md'}
@@ -53,7 +56,7 @@ export default function CardWithImage({id, name, email, age, gender, imageNumber
                     <Avatar
                         size={'xl'}
                         src={
-                            `https://randomuser.me/api/portraits/${randomUserGender}/${imageNumber}.jpg`
+                            profileImage
                         }
                         css={{
                             border: '2px solid white',

@@ -138,7 +138,7 @@ const CreateCustomerForm = ({onSuccess}) => {
                                 isDisabled={ !isValid || isSubmitting }
                                 mt={4}
                                 type={"submit"}
-                                bgGradient={{sm: 'linear(to-r, blue.600, green.600)'}}
+                                colorScheme={'teal'}
                                 color={"white"}
                             >Submit</Button>
                         </Stack>
